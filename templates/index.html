@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuChat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-panel">
+            <div class="header">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="DocuChat Logo" class="logo">
+                <h1>DocuChat</h1>
+            </div>
+
+            <div class="chat-list-section">
+                <h3>Chat History</h3>
+                <ul id="chatList" class="chat-list"></ul>
+            </div>
+
+            <div id="upload-section" class="upload-section">
+                <div id="drop-area" class="drop-area">
+                    <p>Drag & Drop your PDF here</p>
+                    <p>or</p>
+                    <label for="pdfFile" class="btn">Select PDF</label>
+                    <input type="file" id="pdfFile" />
+                </div>
+                <button class="btn" onclick="uploadPDF()">Upload PDF</button>
+            </div>
+
+            <div class="chat-section">
+                <div id="chatWindow" class="chat-window"></div>
+                <div class="input-section">
+                    <input type="text" id="userInput" placeholder="Ask a question..." />
+                    <button class="btn" onclick="askQuestion()">Ask</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <iframe id="pdfViewer" class="pdf-viewer" type="application/pdf"></iframe>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Processing PDF, please wait...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
